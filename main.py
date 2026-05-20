@@ -17,3 +17,31 @@ def get_user_choice():
             valid_choice = True
         print("Wrong choice.. Please choose only between 1-7")
     return user_choice
+
+
+def handle_add_soldier():
+    pass
+
+
+def handle_remove_soldier():
+    pass
+
+
+def handle_view_soldiers():
+    pass
+
+
+def handle_add_duty():
+    pass
+
+
+def handle_update_duty_status():
+    pass
+
+
+def handle_view_soldier_duties():
+    pass
+
+
+def main():
+    pass
