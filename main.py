@@ -15,24 +15,28 @@ def show_menu():
 
 
 def get_user_choice():
-    valid_choice = False
-    while not valid_choice:
+    while True:
         user_choice = input("Select an action from the menu (1-7):  ")
         if user_choice in "1234567":
-            valid_choice = True
+            return user_choice
         print("Wrong choice.. Please choose only between 1-7")
-    return user_choice
 
 
 def handle_add_soldier():
-    id = input("Enter new soldier ID:  ")
-    name = input("Enter new soldier name:  ")
-    sm.add_soldier(id, name)
+    try:
+        id = int(input("Enter new soldier ID:  "))
+        name = input("Enter new soldier name:  ")
+        sm.add_soldier(id, name)
+    except ValueError as e:
+        print(f"Error: {e}")
 
 
 def handle_remove_soldier():
-    id = input("Enter soldier ID to remove:  ")
-    sm.remove_soldier(id)
+    try:
+        id = int(input("Enter soldier ID to remove:  "))
+        sm.remove_soldier(id)
+    except (KeyError, ValueError) as e:
+        print(f"Error: {e}")
 
 
 def handle_view_soldiers():
@@ -40,38 +44,43 @@ def handle_view_soldiers():
 
 
 def handle_add_duty():
-    id = input("Enter a soldier ID to add a duty:  ")
-    valid_duty = False
-    for i, j in enumerate(d.DUTIES):
-        print(f"{i}: {j}")
-    while not valid_duty:
-        duty = input("Select a duty from the list:  ")
-        if duty not in d.DUTIES:
+    try:
+        id = int(input("Enter a soldier ID to add a duty:  "))
+        for i, j in enumerate(d.DUTIES):
+            print(f"{i}: {j}")
+        while True:
+            duty = input("Select a duty from the list:  ")
+            if duty in d.DUTIES:
+                break
             print("Invalid duty... Please select an existing duty only!")
-        else:
-            valid_duty = True
-    day = input("Enter day of week (Sunday - Thursday):  ")
-    dm.add_duty(id, duty, day)
+        day = input("Enter day of week (Sunday - Thursday):  ")
+        dm.add_duty(id, duty, day)
+    except (KeyError, ValueError) as e:
+        print(f"Error: {e}")
 
 
 def handle_update_duty_status():
-    id = input("Enter a soldier ID to add a duty:  ")
-    valid_duty = False
-    for i, j in enumerate(d.DUTIES):
-        print(f"{i}: {j}")
-    while not valid_duty:
-        duty = input("Select a duty from the list:  ")
-        if duty not in d.DUTIES:
+    try:
+        id = int(input("Enter a soldier ID to update a duty status:  "))
+        for i, j in enumerate(d.DUTIES):
+            print(f"{i}: {j}")
+        while True:
+            duty = input("Select a duty from the list:  ")
+            if duty in d.DUTIES:
+                break
             print("Invalid duty... Please select an existing duty only!")
-        else:
-            valid_duty = True
-    status = input("Enter status for duty (pending / completed / missed):  ")
-    dm.update_duty_status(id, duty, status)
+        status = input("Enter status for duty (pending / completed / missed):  ")
+        dm.update_duty_status(id, duty, status)
+    except (KeyError, ValueError) as e:
+        print(f"Error: {e}")
 
 
 def handle_view_soldier_duties():
-    id = input("Enter Soldier ID to view duties:  ")
-    dm.get_soldier_duties(id)
+    try:
+        id = int(input("Enter Soldier ID to view duties:  "))
+        dm.get_soldier_duties(id)
+    except (KeyError, ValueError) as e:
+        print(f"Error: {e}")
 
 
 def main():

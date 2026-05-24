@@ -16,14 +16,14 @@ def add_duty(soldier_id: int, duty_name: str, day: str):
 
 def update_duty_status(soldier_id: int, duty_name: str, new_status: str):
     soldier = u.find_soldier_by_id(soldier_id)
-    duty = u.find_duty_by_name(soldier["duties"], duty_name)
     if not soldier:
         raise KeyError(f"ID number: {soldier_id} does not exist in the system!")
+    duty = u.find_duty_by_name(soldier["duties"], duty_name)
     if not duty:
-        raise ValueError("No duty was found for the requested soldier!")
+        raise KeyError("No duty was found for the requested soldier!")
     if not u.is_valid_status(new_status):
         raise ValueError("Invalid status!")
-    print(f"Status updated successfully! ({duty["status"]} -> {new_status})")
+    print(f"Status updated successfully! ({duty['status']} -> {new_status})")
     duty["status"] = new_status
     
 
