@@ -1,6 +1,6 @@
-Soldiers = []
+soldiers = []
 
-duties = {
+DUTIES = {
     "1": "keeping",
     "2": "tour",
     "3": "kitchen",
@@ -9,6 +9,6 @@ duties = {
     "6": "logistics"
     }
 
-days = ["sunday", "monday", "tuesday", "wednesday", "thursday"]
+DAYS = ["sunday", "monday", "tuesday", "wednesday", "thursday"]
 
-statuses = ["pending", "completed", " missed"]
+STATUES = ["pending", "completed", " missed"]
