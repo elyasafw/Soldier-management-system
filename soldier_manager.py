@@ -14,7 +14,7 @@ def add_soldier(soldier_id: int, name: str):
 
 def remove_soldier(soldier_id: int):
     if not find_soldier_by_id(soldier_id):
-            raise ValueError(f"ID number: {soldier_id} does not exist in the system!")
+            raise KeyError(f"ID number: {soldier_id} does not exist in the system!")
     else:
         for solider in soldiers:
             if solider["id"] == soldier_id:
