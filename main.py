@@ -70,7 +70,8 @@ def handle_update_duty_status():
 
 
 def handle_view_soldier_duties():
-    pass
+    id = input("Enter Soldier ID to view duties:  ")
+    dm.get_soldier_duties(id)
 
 
 def main():
