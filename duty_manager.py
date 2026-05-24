@@ -1,5 +1,4 @@
 import until as u
-from data import soldiers
 
 
 def add_duty(soldier_id: int, duty_name: str, day: str):

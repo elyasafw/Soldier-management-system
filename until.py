@@ -1,5 +1,6 @@
 from data import soldiers, DAYS, STATUES
 
+
 def find_soldier_by_id(soldier_id: int):
     for soldier in soldiers:
         if soldier["id"] == soldier_id:
