@@ -1,4 +1,4 @@
-from data import soldiers
+from data import soldiers, DAYS
 
 def find_soldier_by_id(soldier_id: int):
     for soldier in soldiers:
@@ -9,7 +9,10 @@ def find_soldier_by_id(soldier_id: int):
 
 
 def find_duty_by_name(duties: list, duty_name: str):
-    pass
+    for duty in duties:
+        if duty["name"] == duty_name:
+            return duty
+    return None
 
 
 def is_valid_name(name: str):

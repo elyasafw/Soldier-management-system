@@ -1,13 +1,6 @@
 soldiers = []
 
-DUTIES = {
-    "1": "keeping",
-    "2": "tour",
-    "3": "kitchen",
-    "4": "cleanliness",
-    "5": "Class attendant",
-    "6": "logistics"
-    }
+DUTIES = ["keeping", "tour", "kitchen", "cleanliness", "Class attendant", "logistics"]
 
 DAYS = ["sunday", "monday", "tuesday", "wednesday", "thursday"]
 
