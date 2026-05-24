@@ -4,4 +4,4 @@ DUTIES = ["keeping", "tour", "kitchen", "cleanliness", "Class attendant", "logis
 
 DAYS = ["sunday", "monday", "tuesday", "wednesday", "thursday"]
 
-STATUES = ["pending", "completed", " missed"]
+STATUES = ["pending", "completed", "missed"]
