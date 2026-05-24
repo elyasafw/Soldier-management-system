@@ -27,6 +27,15 @@ def handle_add_soldier():
         id = int(input("Enter new soldier ID:  "))
         name = input("Enter new soldier name:  ")
         sm.add_soldier(id, name)
+        while True:
+            print("\n1. Add duty to this soldier\n2. Back")
+            choice = input("Select an action: ")
+            if choice == "1":
+                handle_add_duty()
+            elif choice == "2":
+                break
+            else:
+                print("Invalid choice.")
     except ValueError as e:
         print(f"Error: {e}")
 
