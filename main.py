@@ -55,7 +55,18 @@ def handle_add_duty():
 
 
 def handle_update_duty_status():
-    pass
+    id = input("Enter a soldier ID to add a duty:  ")
+    valid_duty = False
+    for i, j in enumerate(d.DUTIES):
+        print(f"{i}: {j}")
+    while not valid_duty:
+        duty = input("Select a duty from the list:  ")
+        if duty not in d.DUTIES:
+            print("Invalid duty... Please select an existing duty only!")
+        else:
+            valid_duty = True
+    status = input("Enter status for duty (pending / completed / missed):  ")
+    dm.update_duty_status(id, duty, status)
 
 
 def handle_view_soldier_duties():
