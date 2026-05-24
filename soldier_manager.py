@@ -24,4 +24,7 @@ def remove_soldier(soldier_id: int):
 
 
 def get_all_soldiers():
-    pass
+    for soldier in soldiers:
+        duties_str = " | ".join(f"{d['name']}, {d['day']}, {d['status']}" for d in soldier["duties"])
+        print(f"{soldier['name']} | {soldier['id']}")
+        print(f"  {duties_str}")
