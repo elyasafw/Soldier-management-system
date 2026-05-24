@@ -69,7 +69,7 @@ def handle_add_duty():
     try:
         id = int(input("Enter a soldier ID to add a duty:  "))
         for i, j in enumerate(d.DUTIES):
-            print(f"{i}: {j}")
+            print(f"{i+1}. {j}")
         while True:
             duty = input("Select a duty from the list:  ")
             if duty in d.DUTIES:
