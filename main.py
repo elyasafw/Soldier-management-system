@@ -84,4 +84,22 @@ def handle_view_soldier_duties():
 
 
 def main():
-    pass
+    actions = {
+        "1": handle_add_soldier,
+        "2": handle_remove_soldier,
+        "3": handle_view_soldiers,
+        "4": handle_add_duty,
+        "5": handle_update_duty_status,
+        "6": handle_view_soldier_duties,
+    }
+    while True:
+        show_menu()
+        choice = get_user_choice()
+        if choice == "7":
+            print("Goodbye!")
+            break
+        actions[choice]()
+
+
+if __name__ == "__main__":
+    main()
