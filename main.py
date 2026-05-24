@@ -1,5 +1,6 @@
 import soldier_manager as sm
 import duty_manager as dm
+import data as d
 
 
 def show_menu():
@@ -39,7 +40,18 @@ def handle_view_soldiers():
 
 
 def handle_add_duty():
-    pass
+    id = input("Enter a soldier ID to add a duty:  ")
+    valid_duty = False
+    for i, j in enumerate(d.DUTIES):
+        print(f"{i}: {j}")
+    while not valid_duty:
+        duty = input("Select a duty from the list:  ")
+        if duty not in d.DUTIES:
+            print("Invalid duty... Please select an existing duty only!")
+        else:
+            valid_duty = True
+    day = input("Enter day of week (Sunday - Thursday):  ")
+    dm.add_duty(id, duty, day)
 
 
 def handle_update_duty_status():
