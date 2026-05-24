@@ -92,6 +92,17 @@ def handle_view_soldier_duties():
     try:
         id = int(input("Enter Soldier ID to view duties:  "))
         dm.get_soldier_duties(id)
+        while True:
+            print("\n1. Add duty\n2. Update duty status\n3. Back")
+            choice = input("Select an action: ")
+            if choice == "1":
+                handle_add_duty()
+            elif choice == "2":
+                handle_update_duty_status()
+            elif choice == "3":
+                break
+            else:
+                print("Invalid choice.")
     except (KeyError, ValueError) as e:
         print(f"Error: {e}")
 
