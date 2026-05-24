@@ -27,6 +27,15 @@ def handle_add_soldier():
         id = int(input("Enter new soldier ID:  "))
         name = input("Enter new soldier name:  ")
         sm.add_soldier(id, name)
+        while True:
+            print("\n1. Add duty to this soldier\n2. Back")
+            choice = input("Select an action: ")
+            if choice == "1":
+                handle_add_duty()
+            elif choice == "2":
+                break
+            else:
+                print("Invalid choice.")
     except ValueError as e:
         print(f"Error: {e}")
 
@@ -41,6 +50,19 @@ def handle_remove_soldier():
 
 def handle_view_soldiers():
     sm.get_all_soldiers()
+    while True:
+        print("\n1. Add soldier\n2. Remove soldier\n3. Add duty to soldier\n4. Back")
+        choice = input("Select an action: ")
+        if choice == "1":
+            handle_add_soldier()
+        elif choice == "2":
+            handle_remove_soldier()
+        elif choice == "3":
+            handle_add_duty()
+        elif choice == "4":
+            break
+        else:
+            print("Invalid choice.")
 
 
 def handle_add_duty():
@@ -79,6 +101,17 @@ def handle_view_soldier_duties():
     try:
         id = int(input("Enter Soldier ID to view duties:  "))
         dm.get_soldier_duties(id)
+        while True:
+            print("\n1. Add duty\n2. Update duty status\n3. Back")
+            choice = input("Select an action: ")
+            if choice == "1":
+                handle_add_duty()
+            elif choice == "2":
+                handle_update_duty_status()
+            elif choice == "3":
+                break
+            else:
+                print("Invalid choice.")
     except (KeyError, ValueError) as e:
         print(f"Error: {e}")
 
