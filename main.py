@@ -1,3 +1,7 @@
+import soldier_manager as sm
+import duty_manager as dm
+
+
 def show_menu():
     print("--- Soldier duty management system ---\n")
     print("1. Add Soldier\n" \
@@ -20,15 +24,18 @@ def get_user_choice():
 
 
 def handle_add_soldier():
-    pass
+    id = input("Enter new soldier ID:  ")
+    name = input("Enter new soldier name:  ")
+    sm.add_soldier(id, name)
 
 
 def handle_remove_soldier():
-    pass
+    id = input("Enter soldier ID to remove:  ")
+    sm.remove_soldier(id)
 
 
 def handle_view_soldiers():
-    pass
+    sm.get_all_soldiers()
 
 
 def handle_add_duty():

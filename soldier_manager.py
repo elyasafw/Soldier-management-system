@@ -5,7 +5,7 @@ from data import soldiers
 def add_soldier(soldier_id: int, name: str):
         if find_soldier_by_id(soldier_id):
             raise ValueError(f"ID number: {soldier_id} already exists in the system!")
-        elif is_valid_name(name):
+        elif not is_valid_name(name):
             raise ValueError(f"Invalid soldier name...")
         else:
             soldiers.append({"id": soldier_id, "name": name, "duties": []})
