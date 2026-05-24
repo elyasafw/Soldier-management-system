@@ -31,5 +31,7 @@ def get_soldier_duties(soldier_id: int):
     soldier = u.find_soldier_by_id(soldier_id)
     if not soldier:
         raise KeyError(f"ID number: {soldier_id} does not exist in the system!")
-    for duty in soldier["duties"]:
-        print(duty)
+    duties_str = " | ".join(
+        f"{d['name']}, {d['day']}, {d['status']}" for d in soldier["duties"]
+    )
+    print(f"  {duties_str}")

@@ -9,7 +9,7 @@ def add_soldier(soldier_id: int, name: str):
             raise ValueError(f"Invalid soldier name...")
         else:
             soldiers.append({"id": soldier_id, "name": name, "duties": []})
-            print(f"Successfully added soldier ({soldier_id, name})")
+            print(f"Successfully added soldier ({soldier_id}, {name})")
 
 
 def remove_soldier(soldier_id: int):
