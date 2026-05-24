@@ -1,4 +1,4 @@
-from data import soldiers, DAYS
+from data import soldiers, DAYS, STATUES
 
 def find_soldier_by_id(soldier_id: int):
     for soldier in soldiers:
@@ -22,8 +22,8 @@ def is_valid_name(name: str):
 
 
 def is_valid_status(status: str):
-    pass
+    return status in STATUES
 
 
 def is_valid_day(day: str):
-    pass
+    return day in DAYS
