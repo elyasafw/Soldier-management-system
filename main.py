@@ -41,6 +41,19 @@ def handle_remove_soldier():
 
 def handle_view_soldiers():
     sm.get_all_soldiers()
+    while True:
+        print("\n1. Add soldier\n2. Remove soldier\n3. Add duty to soldier\n4. Back")
+        choice = input("Select an action: ")
+        if choice == "1":
+            handle_add_soldier()
+        elif choice == "2":
+            handle_remove_soldier()
+        elif choice == "3":
+            handle_add_duty()
+        elif choice == "4":
+            break
+        else:
+            print("Invalid choice.")
 
 
 def handle_add_duty():
