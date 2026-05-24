@@ -15,11 +15,14 @@ def show_menu():
 
 
 def get_user_choice():
-    while True:
+    valid = False
+    while not valid:
         user_choice = input("Select an action from the menu (1-7):  ")
         if user_choice in "1234567":
-            return user_choice
-        print("Wrong choice.. Please choose only between 1-7")
+            valid = True
+        else:
+            print("Wrong choice.. Please choose only between 1-7")
+    return user_choice
 
 
 def handle_add_soldier():
@@ -27,13 +30,14 @@ def handle_add_soldier():
         id = int(input("Enter new soldier ID:  "))
         name = input("Enter new soldier name:  ")
         sm.add_soldier(id, name)
-        while True:
+        running = True
+        while running:
             print("\n1. Add duty to this soldier\n2. Back")
             choice = input("Select an action: ")
             if choice == "1":
                 handle_add_duty()
             elif choice == "2":
-                break
+                running = False
             else:
                 print("Invalid choice.")
     except ValueError as e:
@@ -50,7 +54,8 @@ def handle_remove_soldier():
 
 def handle_view_soldiers():
     sm.get_all_soldiers()
-    while True:
+    running = True
+    while running:
         print("\n1. Add soldier\n2. Remove soldier\n3. Add duty to soldier\n4. Back")
         choice = input("Select an action: ")
         if choice == "1":
@@ -60,7 +65,7 @@ def handle_view_soldiers():
         elif choice == "3":
             handle_add_duty()
         elif choice == "4":
-            break
+            running = False
         else:
             print("Invalid choice.")
 
@@ -70,11 +75,13 @@ def handle_add_duty():
         id = int(input("Enter a soldier ID to add a duty:  "))
         for i, j in enumerate(d.DUTIES):
             print(f"{i+1}. {j}")
-        while True:
+        valid = False
+        while not valid:
             duty = input("Select a duty from the list:  ")
             if duty in d.DUTIES:
-                break
-            print("Invalid duty... Please select an existing duty only!")
+                valid = True
+            else:
+                print("Invalid duty... Please select an existing duty only!")
         day = input("Enter day of week (Sunday - Thursday):  ")
         dm.add_duty(id, duty, day)
     except (KeyError, ValueError) as e:
@@ -86,11 +93,13 @@ def handle_update_duty_status():
         id = int(input("Enter a soldier ID to update a duty status:  "))
         for i, j in enumerate(d.DUTIES):
             print(f"{i}: {j}")
-        while True:
+        valid = False
+        while not valid:
             duty = input("Select a duty from the list:  ")
             if duty in d.DUTIES:
-                break
-            print("Invalid duty... Please select an existing duty only!")
+                valid = True
+            else:
+                print("Invalid duty... Please select an existing duty only!")
         status = input("Enter status for duty (pending / completed / missed):  ")
         dm.update_duty_status(id, duty, status)
     except (KeyError, ValueError) as e:
@@ -101,7 +110,8 @@ def handle_view_soldier_duties():
     try:
         id = int(input("Enter Soldier ID to view duties:  "))
         dm.get_soldier_duties(id)
-        while True:
+        running = True
+        while running:
             print("\n1. Add duty\n2. Update duty status\n3. Back")
             choice = input("Select an action: ")
             if choice == "1":
@@ -109,7 +119,7 @@ def handle_view_soldier_duties():
             elif choice == "2":
                 handle_update_duty_status()
             elif choice == "3":
-                break
+                running = False
             else:
                 print("Invalid choice.")
     except (KeyError, ValueError) as e:
@@ -125,13 +135,15 @@ def main():
         "5": handle_update_duty_status,
         "6": handle_view_soldier_duties,
     }
-    while True:
+    running = True
+    while running:
         show_menu()
         choice = get_user_choice()
         if choice == "7":
             print("Goodbye!")
-            break
-        actions[choice]()
+            running = False
+        else:
+            actions[choice]()
 
 
 if __name__ == "__main__":
