@@ -28,4 +28,8 @@ def update_duty_status(soldier_id: int, duty_name: str, new_status: str):
     
 
 def get_soldier_duties(soldier_id: int):
-    pass
+    soldier = u.find_soldier_by_id(soldier_id)
+    if not soldier:
+        raise KeyError(f"ID number: {soldier_id} does not exist in the system!")
+    for duty in soldier["duties"]:
+        print(duty)
